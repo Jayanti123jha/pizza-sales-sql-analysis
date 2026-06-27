@@ -1,0 +1,11 @@
+-- find the category-wise distribution of pizzas.
+
+SELECT
+	CATEGORY,
+	COUNT(PIZZA_TYPES.NAME) AS PIZZA_NAME
+FROM
+	PIZZA_TYPES
+GROUP BY
+	CATEGORY
+ORDER BY
+	PIZZA_NAME DESC;

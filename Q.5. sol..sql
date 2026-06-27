@@ -1,0 +1,16 @@
+-- Q.5.List the top 5 most ordered pizza types along with their quantities.
+
+SELECT
+	PIZZA_TYPES.NAME,
+	SUM(ORDER_DETAILS.QUANTITY) AS PIZZA_QUANTITY
+FROM
+	PIZZA_TYPES
+	-- count(pizza_types.pizza_type_id) as pizza_type from order_details
+	JOIN PIZZAS ON PIZZA_TYPES.PIZZA_TYPE_ID = PIZZAS.PIZZA_TYPE_ID
+	JOIN ORDER_DETAILS ON ORDER_DETAILS.PIZZA_ID = PIZZAS.PIZZA_ID
+GROUP BY
+	PIZZA_TYPES.NAME
+ORDER BY
+	PIZZA_QUANTITY DESC
+LIMIT
+	5;
